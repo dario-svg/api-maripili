@@ -4,7 +4,16 @@ import os
 
 app = FastAPI(title="API Restaurante Maripili")
 
-# Função auxiliar para conectar ao banco
+# ---------- Endpoints básicos ----------
+@app.get("/")
+def read_root():
+    return {"status": "API do Maripili funcionando ✅"}
+
+@app.get("/health")
+def health_check():
+    return {"health": "ok", "message": "API está no ar e respondendo 🚀"}
+
+# ---------- Conexão com MySQL ----------
 def get_connection():
     return mysql.connector.connect(
         host=os.getenv("DB_HOST"),
@@ -14,10 +23,7 @@ def get_connection():
         database=os.getenv("DB_NAME"),
     )
 
-@app.get("/")
-def read_root():
-    return {"status": "API do Maripili funcionando ✅"}
-
+# ---------- Endpoint com dados do banco ----------
 @app.get("/entradas-ativas")
 def get_entradas_ativas():
     try:

@@ -1,0 +1,62 @@
+
+RESUMO DO PROJETO: API RESTAURANTE MARIPILI
+
+🎯 Objetivo final
+Criar uma API pública em FastAPI que consulte um banco de dados MySQL online, retornando informações reais do restaurante Maripili (como pratos ativos, preços, categorias, etc).
+
+🧱 Estrutura do Projeto
+
+1. Código da API
+- Linguagem: Python
+- Framework: FastAPI
+- Arquivo principal: busca_pratos_api.py
+
+2. Banco de Dados
+- MySQL remoto (freemysqlhosting.net)
+- Contém tabela com pratos, colunas como:
+  Nome, Restaurante, classificação gastrono, ativo/suspenso, Preço_venda, etc.
+
+3. Hospedagem da API
+- Plataforma: Render.com
+- Tipo de serviço: Web Service (Free)
+- Deploy automatizado via GitHub
+
+🔗 Conexões necessárias
+
+1. API precisa se conectar ao MySQL
+   → Usando mysql.connector e variáveis de ambiente (DB_HOST, DB_PORT, DB_USER, DB_PASS, DB_NAME)
+
+2. Render precisa puxar o código do GitHub automaticamente
+   → Isso exige que o projeto local esteja versionado com Git e conectado a um repositório remoto (no GitHub)
+
+✅ O que já foi feito
+
+- API desenvolvida (busca_pratos_api.py)
+- Deploy no Render funcional ✅
+- MySQL acessível com credenciais ✅
+- Variáveis de ambiente criadas no Render ✅
+- Endpoint básico `/` e `/busca-prato` criados ✅
+
+❌ O que ainda falta
+
+1. ✅ [Feito parcialmente] Substituir busca_pratos_api.py com código que conecta ao banco
+2. ❌ Versão final do código não foi enviada para o GitHub
+3. ❌ Render ainda não está conectado a um repositório Git remoto
+4. ❌ API ainda não consulta de fato os dados do MySQL (falta o push com o código certo)
+
+🛠️ Etapas restantes (com tempo estimado)
+
+1. Configurar Git local corretamente (git init, commit) — 5 min
+2. Criar repositório no GitHub e conectar (git remote add origin) — 5 min
+3. Fazer push do código — 2 min
+4. Verificar logs do Render para confirmar novo deploy — 3 min
+5. Testar endpoint /entradas-ativas com dados reais — 5 min
+
+🕒 Total estimado: ~20 minutos
+
+🧭 Início seguro da próxima tentativa
+
+Na próxima vez que retomarmos:
+- Reler este resumo antes de começar
+- Confirmar: Git configurado? Repositório criado? Variáveis no Render ainda válidas?
+- Não seguir adiante até que tudo esteja claro e testado

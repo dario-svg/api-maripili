@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 import mysql.connector
 import os
+import logging
 
 app = FastAPI(title="API Restaurante Maripili")
 
@@ -15,12 +16,24 @@ def health_check():
 
 # ---------- Conexão com MySQL ----------
 def get_connection():
+    host = os.getenv("DB_HOST")
+    port = int(os.getenv("DB_PORT", "3306"))  # garante que seja número
+    user = os.getenv("DB_USER")
+    password = os.getenv("DB_PASS")
+    database = os.getenv("DB_NAME")
+
+    # Log de debug (não mostra senha!)
+    logging.getLogger("uvicorn").info(
+        "🔎 Conectando ao banco: host=%s port=%s user=%s db=%s",
+        host, port, user, database
+    )
+
     return mysql.connector.connect(
-        host=os.getenv("DB_HOST"),
-        port=os.getenv("DB_PORT"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASS"),
-        database=os.getenv("DB_NAME"),
+        host=host,
+        port=port,
+        user=user,
+        password=password,
+        database=database,
     )
 
 # ---------- Endpoint com dados do banco ----------

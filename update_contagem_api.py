@@ -25,37 +25,18 @@ async def update_contagem(request: Request):
         cursor = conn.cursor()
 
         sql = """
-        UPDATE contagem SET
-            restaurante = %s,
-            ingrediente = %s,
-            unidade = %s,
-            soma = %s,
+        UPDATE contagem
+        SET
             contagem_1 = %s,
-            contagem_2 = %s,
-            contagem_3 = %s,
-            data_1 = STR_TO_DATE(%s, '%%d/%%m/%%Y'),
-            data_2 = STR_TO_DATE(%s, '%%d/%%m/%%Y'),
-            data_3 = STR_TO_DATE(%s, '%%d/%%m/%%Y'),
-            quem_contou_1 = %s,
-            quem_contou_2 = %s,
-            quem_contou_3 = %s
+            data_1 = STR_TO_DATE(%s, '%%Y-%%m-%%d'),
+            quem_contou_1 = %s
         WHERE id = %s
         """
 
         params = (
-            data.get("restaurante"),
-            data.get("ingrediente"),
-            data.get("unidade"),
-            data.get("soma"),
             data.get("contagem_1"),
-            data.get("contagem_2"),
-            data.get("contagem_3"),
             data.get("data_1"),
-            data.get("data_2"),
-            data.get("data_3"),
             data.get("quem_contou_1"),
-            data.get("quem_contou_2"),
-            data.get("quem_contou_3"),
             data.get("id")
         )
 
